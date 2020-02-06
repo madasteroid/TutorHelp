@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TutorHelpBackend.Data;
 using TutorHelpBackend.Models;
 
 namespace TutorHelpBackend
@@ -31,6 +32,8 @@ namespace TutorHelpBackend
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<IAuth, Auth>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
